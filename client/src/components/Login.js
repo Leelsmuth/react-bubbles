@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Login(props) {
   const usernameRef = useRef();
@@ -32,6 +33,7 @@ export default function Login(props) {
       <div>
         <button onClick={submit}>Submit</button>
       </div>
+      <Link to="/">Home Page</Link>
     </div>
   );
 }
