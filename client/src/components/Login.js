@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function Login(props) {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const [error, setError] = useState("");
 
   const submit = () => {
     axios
@@ -18,7 +18,7 @@ export default function Login(props) {
         props.history.push("/bubble");
       })
       .catch(error => {
-        alert(error.response.data.error);
+        setError(error.response.data.error);
       });
   };
 
@@ -29,11 +29,10 @@ export default function Login(props) {
         <br />
         password <input ref={passwordRef} type="text" />
       </div>
-
+      {error && <p>{error}</p>}
       <div>
         <button onClick={submit}>Submit</button>
       </div>
-      <Link to="/">Home Page</Link>
     </div>
   );
 }

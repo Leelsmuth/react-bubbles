@@ -15,7 +15,7 @@ const BubblePage = () => {
         setColorList(response.data);
       })
       .catch(err => console.log(err));
-  });
+  }, []);
 
   return (
     <>
